@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine</title>
+
+    <!-- Your existing CSS -->
+    <link rel="stylesheet" href="css/valentine.css" />
+</head>
+
+<body>
+
+    <div id="valentineQuestion">
+        <b>Will you be my valentine, Bubu ❤️?</b>
+    </div>
+
+    <!-- YES BUTTON -->
+    <button class="answerButton"
+        onclick="location.href='thankyou.html'">
+        Yes ❤️
+    </button>
+
+    <!-- NO BUTTON -->
+    <button class="answerButton" id="noButton">
+        I no no wanna o(╥﹏╥)o
+    </button>
+
+    <br /><br />
+
+    <!-- IMAGE -->
+    <img id="mainPhoto"
+        src="please.png"
+        height="498px"
+        width="150px"
+        alt="cat asking question"
+        class="responsive" />
+
+    <script>
+        const noButton = document.getElementById("noButton");
+        const yesButton = document.querySelector(
+            'button[onclick*="thankyou.html"]'
+        );
+        const photo = document.getElementById("mainPhoto");
+
+        // Images must be in same folder as index.html
+        const photos = [
+            "please.png",
+            "sad.png",
+            "cry.png"
+        ];
+
+        let index = 0;
+
+        noButton.addEventListener("click", function () {
+
+            // Increase YES button size
+            let currentFontSize = parseInt(
+                window.getComputedStyle(yesButton).fontSize
+            );
+            yesButton.style.fontSize =
+                (currentFontSize + 10) + "px";
+
+            // Change photo
+            index = (index + 1) % photos.length;
+            photo.src = photos[index];
+        });
+    </script>
+
+</body>
+</html>
